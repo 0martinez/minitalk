@@ -6,7 +6,7 @@
 /*   By: omartine <omartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 13:27:10 by omartine          #+#    #+#             */
-/*   Updated: 2022/03/03 13:40:13 by omartine         ###   ########.fr       */
+/*   Updated: 2022/03/03 15:54:03 by omartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	sig_usr(int sign)
 
 int	main(void)
 {
+	pid_t	pid;
+
+	pid = getpid();
+	printf("%d", pid);
+	return (0);
 	if (signal(SIGUSR1, sig_usr) == SIG_ERR)
 		printf("can not catch SIGUSR1\n");
 	if (signal(SIGUSR2, sig_usr) == SIG_ERR)

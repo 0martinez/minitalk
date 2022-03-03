@@ -1,25 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omartine <omartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 13:52:57 by omartine          #+#    #+#             */
-/*   Updated: 2022/03/03 16:00:23 by omartine         ###   ########.fr       */
+/*   Created: 2022/03/03 16:02:30 by omartine          #+#    #+#             */
+/*   Updated: 2022/03/03 18:01:46 by omartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "../minitalk.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/wait.h>
+int	ft_strlen(char *str)
+{
+	int	i;
 
-void	ft_putstr(char *str);
-void	ft_putchar(char c);
+	i = 0;
+	while (str[i] != 0)
+		i++;
+	return (i);
+}
 
-#endif
+int	ft_itoa(char *str)
+{
+	int	num;
+	int	simb;
+
+	num = 0;
+	simb = 1;
+	if (str[0] == '-')
+		simb = -1;
+
+}
+
+void	ft_putnbr(char *str)
+{
+	int	i;
+	int	len;
+	int	smb;
+
+	i = 0;
+	smb = 1;
+	len = ft_strlen(str);
+	if (str[0] == '-')
+		smb = -1;
+
+}
