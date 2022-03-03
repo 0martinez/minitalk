@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omartine <omartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 13:52:51 by omartine          #+#    #+#             */
-/*   Updated: 2022/03/03 13:36:16 by omartine         ###   ########.fr       */
+/*   Created: 2022/03/03 13:27:10 by omartine          #+#    #+#             */
+/*   Updated: 2022/03/03 13:40:13 by omartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-/*
-int	main(int argc, char **argv)
-{
-	int	id;
 
-	id = fork();
-	if (id == 0)
-	{
-		printf("0->%d\n", id);
-	}
+void	sig_usr(int sign)
+{
+	if (sign == SIGUSR1)
+		printf("SIGUSR1 RECEIVED\n");
+	else if (sign == SIGUSR2)
+		printf("sigusr2 received\n");
 	else
-		printf("!0->%d\n", id);
-	return (0);
-}*/
+		printf("signal %d\n", sign);
+}
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	printf("hola");
-
-	return (0);
+	if (signal(SIGUSR1, sig_usr) == SIG_ERR)
+		printf("can not catch SIGUSR1\n");
+	if (signal(SIGUSR2, sig_usr) == SIG_ERR)
+		printf("can not catch SIGUSR2\n");
+	while (1)
+		sleep(1);
 }
