@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omartine <omartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 13:52:51 by omartine          #+#    #+#             */
-/*   Updated: 2022/03/03 13:36:16 by omartine         ###   ########.fr       */
+/*   Created: 2022/04/08 18:14:24 by omartine          #+#    #+#             */
+/*   Updated: 2022/04/08 18:15:22 by omartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
-/*
-int	main(int argc, char **argv)
+#include "../minitalk.h"
+
+int	ft_strlen(char *str)
 {
-	int	id;
+	int	i;
 
-	id = fork();
-	if (id == 0)
-	{
-		printf("0->%d\n", id);
-	}
-	else
-		printf("!0->%d\n", id);
-	return (0);
-}*/
-
-int	main(int argc, char **argv)
-{
-	printf("hola");
-
-	return (0);
+	i = 0;
+	while (str[i] != 0)
+		i++;
+	return (i);
 }

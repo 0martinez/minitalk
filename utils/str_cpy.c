@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   str_cpy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omartine <omartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 15:57:44 by omartine          #+#    #+#             */
-/*   Updated: 2022/03/03 15:59:35 by omartine         ###   ########.fr       */
+/*   Created: 2022/04/08 19:25:15 by omartine          #+#    #+#             */
+/*   Updated: 2022/04/08 19:28:12 by omartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minitalk.h"
 
-void	ft_putchar(char c)
+char	*str_cpy(char *str)
 {
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str)
-{
-	int	i;
+	char	*new_str;
+	int		i;
 
 	i = 0;
+	if (!str)
+		return (0);
+	new_str = malloc(sizeof(char) * ft_strlen(str) + 1);
+	if (!new_str)
+		return (0);
 	while (str[i] != 0)
 	{
-		ft_putstr(str[i]);
+		new_str[i] = str[i];
 		i++;
 	}
+	new_str[i] = 0;
+	return (new_str);
 }
