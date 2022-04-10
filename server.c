@@ -35,8 +35,6 @@ void	signal_handler(int signal)
 
 int	main(void)
 {
-	int		pid;
-
 	show_pid(getpid());
 	signal(SIGUSR1, signal_handler);
 	while (1)
