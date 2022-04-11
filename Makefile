@@ -7,7 +7,7 @@ S_SERVER = server.c utils/ft_atoi.c utils/ft_itoa.c utils/ft_strlen.c \
 	   utils/str_cpy.c
 
 S_CLIENT = client.c utils/ft_atoi.c utils/ft_itoa.c utils/ft_strlen.c \
-           utils/str_cpy.c
+           utils/str_cpy.c utils/client_utils.c
 
 OBJS_SERVER = $(S_SERVER:.c=.o)
 

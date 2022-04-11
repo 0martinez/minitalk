@@ -21,7 +21,7 @@ void	handle_char_signal(char c, int pid)
 	printf("\n%c---%d---", c, c);
 	while (i >= 0)
 	{
-		if ((c >> i) & 1 == 1)
+		if (((c >> i) & 1) == 1)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
