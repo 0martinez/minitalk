@@ -31,25 +31,18 @@ void	signal_handler(int signal)
 	str_sig = ft_itoa(signal);
 	write(1, "Received", 8);
 	write(1, str_sig, ft_strlen(str_sig));
+	write(1, "\n", 1);
 }
 
 int	main(void)
 {
 	show_pid(getpid());
 	signal(SIGUSR1, signal_handler);
+	signal(SIGUSR2, signal_handler);
 	while (1)
 	{
 		sleep(2);
-		write(1, "SERVER ON\n", 10);
+		//write(1, "SERVER ON\n", 10);
 	}
 	return (0);
 }
-
-
-
-	//if (signal(SIGUSR1, sig_usr) == SIG_ERR)
-	//	printf("can not catch SIGUSR1\n");
-	//if (signal(SIGUSR2, sig_usr) == SIG_ERR)
-	//	printf("can not catch SIGUSR2\n");
-	//while (1)
-	//	sleep(1);

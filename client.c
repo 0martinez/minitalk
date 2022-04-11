@@ -17,15 +17,18 @@ void	handle_char_signal(char c, int pid)
 {
 	int	i;
 
-	i = 0;
-	while (i < 8)
+	i = 7;
+	printf("\n%c---%d---", c, c);
+	while (i >= 0)
 	{
 		if ((c >> i) & 1 == 1)
-			kill(SIGUSR1, pid);
+			kill(pid, SIGUSR1);
 		else
-			kill(SIGUSR2, pid);
-		i++;
+			kill(pid, SIGUSR2);
+		printf("%d", (c >> i) & 1);
+		i--;
 	}
+	printf("\n");
 }	
 
 void	send_string(t_pd_str *pds)
@@ -69,7 +72,7 @@ int	main(int argc, char **argv)
 	if (argc != 3)
 		num_arg_error();
 	pds = init_struct(argv);
-	printf("%d----%s", pds->pid, pds->str);
-	//send_string(pds);
+	//printf("%d----%s", pds->pid, pds->str);
+	send_string(pds);
 	return (0);
 }
