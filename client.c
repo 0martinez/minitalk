@@ -12,6 +12,40 @@
 
 #include "minitalk.h"
 
+
+void	handle_char_signal(char c, int pid)
+{
+	int	i;
+
+	i = 0;
+	while (i < 8)
+	{
+		if ((c >> i) & 1 == 1)
+			kill(SIGUSR1, pid);
+		else
+			kill(SIGUSR2, pid);
+		i++;
+	}
+}	
+
+void	send_string(t_pd_str *pds)
+{
+	int	i;
+
+	i = 0;
+	if (str_checker(pds->str) == 0)
+	{
+		write (1, "Non valid characters on the string", 34);
+		free(pds->str);
+		exit (0);
+	}
+	while (pds->str[i] != 0)
+	{
+		handle_char_signal(pds->str[i], pds->pid);
+		i++;
+	}
+}
+
 void	num_arg_error(void)
 {
 	write(1, "Incorrect number of arguments", 29);
@@ -36,6 +70,6 @@ int	main(int argc, char **argv)
 		num_arg_error();
 	pds = init_struct(argv);
 	printf("%d----%s", pds->pid, pds->str);
-
+	//send_string(pds);
 	return (0);
 }

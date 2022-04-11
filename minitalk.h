@@ -32,4 +32,6 @@ char	*ft_itoa(int n);
 int		ft_strlen(char *str);
 int		ft_atoi(const char *str);
 char	*str_cpy(char *str);
+
+int		str_checker(char *str);
 #endif
