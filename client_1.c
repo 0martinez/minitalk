@@ -1,17 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: omartine <omartine@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 18:42:44 by omartine          #+#    #+#             */
-/*   Updated: 2022/04/08 19:43:31 by omartine         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "minitalk.h"
-
 
 void	handle_char_signal(char c, int pid)
 {
@@ -73,6 +61,10 @@ int	main(int argc, char **argv)
 		num_arg_error();
 	pds = init_struct(argv);
 	//printf("%d----%s", pds->pid, pds->str);
-	send_string(pds);
+	while (1)
+    {
+         send_string(pds);
+         sleep(1); 
+    }
 	return (0);
 }
