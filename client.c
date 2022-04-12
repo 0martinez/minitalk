@@ -26,9 +26,9 @@ void	handle_char_signal(char c, int pid)
 		else
 			kill(pid, SIGUSR2);
 		printf("%d", (c >> i) & 1);
+		usleep(3);
 		i--;
 	}
-	printf("\n");
 }	
 
 void	send_string(t_pd_str *pds)
@@ -36,12 +36,12 @@ void	send_string(t_pd_str *pds)
 	int	i;
 
 	i = 0;
-	if (str_checker(pds->str) == 0)
+	/*if (str_checker(pds->str) == 0)
 	{
 		write (1, "Non valid characters on the string", 34);
 		free(pds->str);
 		exit (0);
-	}
+	}*/
 	while (pds->str[i] != 0)
 	{
 		handle_char_signal(pds->str[i], pds->pid);
@@ -51,7 +51,7 @@ void	send_string(t_pd_str *pds)
 
 void	num_arg_error(void)
 {
-	write(1, "Incorrect number of arguments", 29);
+	write(1, "Incorrect number of arguments\n", 30);
 	exit(0);
 }
 

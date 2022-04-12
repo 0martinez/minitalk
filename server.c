@@ -26,12 +26,25 @@ void	show_pid(int pid)
 
 void	signal_handler(int signal)
 {
-	char	*str_sig;
+	static int	bits;
+	static char	c;
 
-	str_sig = ft_itoa(signal);
-	write(1, "Received", 8);
-	write(1, str_sig, ft_strlen(str_sig));
-	write(1, "\n", 1);
+	if (!bits)
+		bits = 7;
+	else
+		bits--;
+	if (!c)
+		c = 0;
+	if (signal == SIGUSR1)
+		c += 1 << bits;
+	if (signal == SIGUSR2)
+		c += 0 << bits;
+	if (bits == 0 || c == 0)
+	{
+		write(1, &c, 1);
+		c = 0;
+		bits = 7;
+	}
 }
 
 int	main(void)
