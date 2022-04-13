@@ -39,9 +39,13 @@ void	signal_handler(int signal)
 		c += 1 << bits;
 	if (signal == SIGUSR2)
 		c += 0 << bits;
+	
 	if (bits == 0 || c == 0)
 	{
+		if (c == 0 && bits == 0)
+			write(1, "\n", 1);
 		write(1, &c, 1);
+		//printf("%d----%d", c, bits);
 		c = 0;
 		bits = 7;
 	}
@@ -53,9 +57,6 @@ int	main(void)
 	signal(SIGUSR1, signal_handler);
 	signal(SIGUSR2, signal_handler);
 	while (1)
-	{
 		sleep(2);
-		//write(1, "SERVER ON\n", 10);
-	}
 	return (0);
 }

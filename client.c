@@ -26,7 +26,7 @@ void	handle_char_signal(char c, int pid)
 		else
 			kill(pid, SIGUSR2);
 		//printf("%d", (c >> i) & 1);
-		sleep(0.1);
+		sleep(0.2);
 		i--;
 	}
 }	
@@ -47,6 +47,7 @@ void	send_string(t_pd_str *pds)
 		handle_char_signal(pds->str[i], pds->pid);
 		i++;
 	}
+	handle_char_signal(pds->str[i], pds->pid);
 }
 
 void	num_arg_error(void)

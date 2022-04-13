@@ -14,7 +14,7 @@ void	handle_char_signal(char c, int pid)
 		else
 			kill(pid, SIGUSR2);
 		//printf("%d", (c >> i) & 1);
-		sleep(0.1);
+		sleep(0.2);
 		i--;
 	}
 }	
