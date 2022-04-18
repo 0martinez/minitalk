@@ -6,7 +6,7 @@
 /*   By: omartine <omartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 18:14:24 by omartine          #+#    #+#             */
-/*   Updated: 2022/04/08 18:15:22 by omartine         ###   ########.fr       */
+/*   Updated: 2022/04/18 15:37:55 by omartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strlen(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i] != 0)
 		i++;
 	return (i);

@@ -6,7 +6,7 @@
 /*   By: omartine <omartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 18:42:44 by omartine          #+#    #+#             */
-/*   Updated: 2022/04/18 13:30:42 by omartine         ###   ########.fr       */
+/*   Updated: 2022/04/18 16:56:54 by omartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ void	send_string(t_pd_str *pds)
 	int	i;
 
 	i = 0;
-	if (str_checker(pds->str) == 0)
-	{
-		write(1, "Invalid string", 14);
-		exit(0);
-	}
 	while (pds->str[i] != 0)
 	{
 		handle_char_signal(pds->str[i], pds->pid);
@@ -70,5 +65,7 @@ int	main(int argc, char **argv)
 		num_arg_error();
 	pds = init_struct(argv);
 	send_string(pds);
+	free(pds->str);
+	free(pds);
 	return (0);
 }
