@@ -6,7 +6,7 @@
 /*   By: omartine <omartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 13:27:10 by omartine          #+#    #+#             */
-/*   Updated: 2022/04/08 19:48:37 by omartine         ###   ########.fr       */
+/*   Updated: 2022/04/18 13:32:17 by omartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,20 @@ void	signal_handler(int signal)
 	static char	c;
 
 	if (!bits)
-		bits = 7;
-	else
-		bits--;
+		bits = 8;
+	bits--;
 	if (!c)
 		c = 0;
 	if (signal == SIGUSR1)
 		c += 1 << bits;
 	if (signal == SIGUSR2)
 		c += 0 << bits;
-	
-	if (bits == 0 || c == 0)
+	if (bits == 0)
 	{
-		if (c == 0 && bits == 0)
+		if (c == 0)
 			write(1, "\n", 1);
 		write(1, &c, 1);
-		//printf("%d----%d", c, bits);
 		c = 0;
-		bits = 7;
 	}
 }
 

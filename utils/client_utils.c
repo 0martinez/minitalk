@@ -1,18 +1,28 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omartine <omartine@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/18 13:32:56 by omartine          #+#    #+#             */
+/*   Updated: 2022/04/18 13:32:58 by omartine         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../minitalk.h"
 
-int		str_checker(char *str)
+int	str_checker(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i] != 0)
 	{
-		/*if (str[i] >= 0 && str[i] <= 255)
+		if (str[i] >= 0 && str[i] <= 127)
 			i++;
 		else
-			return (0);*/
+			return (0);
 	}
 	return (1);
 }
